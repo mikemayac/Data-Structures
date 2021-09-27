@@ -41,6 +41,48 @@ public class Practica01{
 
 		return result;
 	}
+	
+	//Algoritmo de la actividad 1, mergeSortedArray pero mejorado en tiempo.
+	public static int[] mergeSortedArrayImproved(int[] array1, int n, int[] array2, int m){
+		if(n > array1.length || m > array2.length)
+			throw new RuntimeException("Límites no válidos");
+
+		int[] result = new int[n + m];
+		
+		int i=0; //Iterador i será para el array1
+		int j=0; //Iterador j será para el array2
+		int k=0; //Iterador k será para el arreglo result
+		
+		while (i<n && j<m) {
+			if (array1[i] < array2[j]) { //Si el elemento de array1 es menor que array2
+				result[k] = array1[i];	//Copiamos el elemento de array1
+				i++;					//Avanzamos una posicion en el array1
+				
+			} else {					//Si el elemento de array2 es menor que array1
+				result[k] = array2[j]; //Copiamos el elemento de array2
+				j++;				   //Avanzamos una posicion en el array2.
+			}
+			k++;                      //Avanzamos una posicion en el arreglo result.
+		}
+		//Cuando salimos del while es por que un arreglo ya sea el array1 o array2 se a 
+		//copiado completamente, pero falta por copiarse elementos de algun arreglo aun.
+		
+		if (i==n) { //Significa que ya copiamos todos los elementos de array1, falta el array2.
+			while (j<m) { //Mientras no hayamos terminado de copiar todos los elementos de array2.
+				result[k] = array2[j]; //Copiamos el elemento de array2 en result.
+				j++; //Avanzamos una posicion en array2
+				k++; //Avanzamos una posicion en result.
+			}
+		} 
+		else { //Entramos en la condicion que ya copiamos todo el array2, falta el array1.
+			while (i<n) { //Mientras no hayamos terminado de copiar todos los elementos de array1.
+				result[k] = array1[i]; //Copiamos el elemento de array1 en result.
+				i++; //Avanzamos una posicion en array1.
+				k++; //Avanzamos una posicion en result.
+			}
+		}	
+		return result;
+	}
 
     /**
     * Verifica si un tablero contiene los números desde 0 hasta n-1 en cada fila y cada columna.
@@ -80,7 +122,7 @@ public class Practica01{
 		return true;
 	}
 	
-	//Metodo de la actividad 2 isValidBoard pero mejorado en tiempo.
+	//Algoritmo de la actividad 2, isValidBoard pero mejorado en tiempo.
 	public static boolean isValidBoardImproved(int[][] board){
     	int length = board.length;
 		for (int i = 0; i < length ; i++) {
@@ -126,6 +168,7 @@ public class Practica01{
 
 		// EJEMPLOS DE ACTIVIDAD 1
 		System.out.println("\nEJEMPLOS DE ACTIVIDAD 1\n");
+		System.out.println("Algoritmo 1.");
 
 		int[] arrayA1 = ArrayReader.readArray(directorio1 + "ArrayA1.txt");
 		int[] arrayA2 = ArrayReader.readArray(directorio1 + "ArrayA2.txt");
@@ -141,7 +184,23 @@ public class Practica01{
 		int[] arrayC2 = ArrayReader.readArray(directorio1 + "ArrayC2.txt");
 		int[] resultC = mergeSortedArray(arrayC1, 4, arrayC2, 6);
 		System.out.println("Resultado C: "+Arrays.toString(resultC));
+		
+		System.out.println("\nAlgoritmo 2 (Mejora del algoritmo 1 en tiempo).");
 
+		int[] arrayA1_1 = ArrayReader.readArray(directorio1 + "ArrayA1.txt");
+		int[] arrayA2_1 = ArrayReader.readArray(directorio1 + "ArrayA2.txt");
+		int[] resultA_1 = mergeSortedArray(arrayA1_1, 3, arrayA2_1, 5);
+		System.out.println("Resultado A: "+Arrays.toString(resultA_1));
+
+		int[] arrayB1_1 = ArrayReader.readArray(directorio1 + "ArrayB1.txt");
+		int[] arrayB2_1 = ArrayReader.readArray(directorio1 + "ArrayB2.txt");
+		int[] resultB_1 = mergeSortedArray(arrayB1_1, 5, arrayB2_1, 5);
+		System.out.println("Resultado B: "+Arrays.toString(resultB_1));
+
+		int[] arrayC1_1 = ArrayReader.readArray(directorio1 + "ArrayC1.txt");
+		int[] arrayC2_1 = ArrayReader.readArray(directorio1 + "ArrayC2.txt");
+		int[] resultC_1 = mergeSortedArray(arrayC1_1, 4, arrayC2_1, 6);
+		System.out.println("Resultado C: "+Arrays.toString(resultC_1));
 
 
 		// EJEMPLOS DE ACTIVIDAD 2
