@@ -97,8 +97,8 @@ public class Practica01{
 
 	public static void main(String[] args) {
 
-		String directorio1 = "Examples/ArrayExamples/";
-		String directorio2 = "Examples/BoardExamples/";
+		String directorio1 = "src/fciencias/edatos/practica01/Examples/ArrayExamples/";
+		String directorio2 = "src/fciencias/edatos/practica01/Examples/BoardExamples/";
 
 		// EJEMPLOS DE ACTIVIDAD 1
 		System.out.println("\nEJEMPLOS DE ACTIVIDAD 1\n");
