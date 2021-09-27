@@ -48,14 +48,47 @@ public class Practica01{
     * @return true si el tablero contiene los números desde 0 hasta n-1 en cada fila y columna,
 	* false en otro caso.
     */
-    public static boolean isValidBoard(int[][] board){
+    
+	public static boolean isValidBoard(int[][] board){
+    	int length = board.length;
+		for (int i = 0; i < length ; i++) {
+			for (int j = 0; j < length ; j++ ) {
+				boolean verificador = false;
+				// Verifica sobre las filas
+				for(int k = 0 ; k < length; k++){
+					if(board[i][k] == j){
+						verificador = true;
+						break;
+					}
+				}
+				if(!verificador){
+					return false;
+				}
+				verificador = false;
+				// Verifica sobre las columnas
+				for(int k = 0 ; k < length; k++){
+					if(board[k][i] == j){
+						verificador = true;
+						break;
+					}
+				}
+				if(!verificador){
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	//Metodo de la actividad 2 isValidBoard pero mejorado en tiempo.
+	public static boolean isValidBoardImproved(int[][] board){
     	int length = board.length;
 		for (int i = 0; i < length ; i++) {
 			for (int j = 0; j < length ; j++ ) {
 				boolean verificador = false;
 				// Verifica sobre las filas y columnas.
 				for(int k = 0, h = 0 ; k < length && h < length; k++, h++){
-					if(board[i][k] == j && board[h][i]){
+					if(board[i][k] == j && board[h][i] ==j){
 						verificador = true;
 						break;
 					}
@@ -65,9 +98,10 @@ public class Practica01{
 					}
 				}
 			}
-		}
 		return true;
-	}
+    }
+		
+	
 
 	/**
 	* Rota position cantidad de veces los elementos de un arreglo
@@ -112,7 +146,8 @@ public class Practica01{
 
 		// EJEMPLOS DE ACTIVIDAD 2
 		System.out.println("\nEJEMPLOS DE ACTIVIDAD 2\n");
-
+		System.out.println("Algoritmo 1.");
+		
 		int[][] boardA = ArrayReader.readMatrix(directorio2 + "BoardA.txt");
 		boolean boardResultA = isValidBoard(boardA);
 		System.out.println("El tablero A es válido: "+boardResultA);
@@ -128,7 +163,24 @@ public class Practica01{
 		int[][] boardD = ArrayReader.readMatrix(directorio2 + "BoardD.txt");
 		boolean boardResultD = isValidBoard(boardD);
 		System.out.println("El tablero D es válido: "+boardResultD);
+		
+		System.out.println("\nAlgoritmo 2 (Mejora del algoritmo 1 en tiempo).");
 
+		int[][] boardA1 = ArrayReader.readMatrix(directorio2 + "BoardA.txt");
+		boolean boardResultA1 = isValidBoardImproved(boardA1);
+		System.out.println("El tablero A es válido: "+boardResultA1);
+
+		int[][] boardB1 = ArrayReader.readMatrix(directorio2 + "BoardB.txt");
+		boolean boardResultB1 = isValidBoardImproved(boardB1);
+		System.out.println("El tablero B es válido: "+boardResultB1);
+
+		int[][] boardC1 = ArrayReader.readMatrix(directorio2 + "BoardC.txt");
+		boolean boardResultC1 = isValidBoardImproved(boardC1);
+		System.out.println("El tablero C es válido: "+boardResultC1);
+
+		int[][] boardD1 = ArrayReader.readMatrix(directorio2 + "BoardD.txt");
+		boolean boardResultD1 = isValidBoardImproved(boardD1);
+		System.out.println("El tablero D es válido: "+boardResultD1);
 
 		// EJEMPLOS DE ACTIVIDAD 3
 		System.out.println("\nEJEMPLOS DE ACTIVIDAD 3\n");
