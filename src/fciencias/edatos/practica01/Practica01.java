@@ -8,7 +8,7 @@ import java.util.Arrays;
 */
 public class Practica01{
 
-	/** 
+	/**
 	* Hace la mezcla de dos arreglos ordenados desde la primera posición hasta
 	* una posición límite
 	* @param array1 el primer arreglo a mezlar
@@ -20,14 +20,14 @@ public class Practica01{
 	public static int[] mergeSortedArray(int[] array1, int n, int[] array2, int m){
 		if(n > array1.length || m > array2.length)
 			throw new RuntimeException("Límites no válidos");
-		
+
 		int[] result = new int[n + m];
 		int pointer;
 		for(pointer = 0; pointer < n; pointer++)
 			result[pointer] = array1[pointer];
 		for(int i = 0 ; i < m ; i++, pointer++)
 			result[pointer] = array2[i];
-		
+
 		// Ordenamiento del arreglo result
 		for(int j = 0; j < result.length - 1; j++){
 			for(int k = j+1; k < result.length; k++){
@@ -53,26 +53,16 @@ public class Practica01{
 		for (int i = 0; i < length ; i++) {
 			for (int j = 0; j < length ; j++ ) {
 				boolean verificador = false;
-				// Verifica sobre las filas
-				for(int k = 0 ; k < length; k++){
-					if(board[i][k] == j){
+				// Verifica sobre las filas y columnas.
+				for(int k = 0, h = 0 ; k < length && h < length; k++, h++){
+					if(board[i][k] == j && board[h][i]){
 						verificador = true;
 						break;
 					}
 				}
 				if(!verificador){
 					return false;
-				}
-				verificador = false;
-				// Verifica sobre las columnas
-				for(int k = 0 ; k < length; k++){
-					if(board[k][i] == j){
-						verificador = true;
-						break;
 					}
-				}
-				if(!verificador){
-					return false;
 				}
 			}
 		}
