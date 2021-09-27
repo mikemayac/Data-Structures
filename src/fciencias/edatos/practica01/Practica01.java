@@ -189,17 +189,17 @@ public class Practica01{
 
 		int[] arrayA1_1 = ArrayReader.readArray(directorio1 + "ArrayA1.txt");
 		int[] arrayA2_1 = ArrayReader.readArray(directorio1 + "ArrayA2.txt");
-		int[] resultA_1 = mergeSortedArray(arrayA1_1, 3, arrayA2_1, 5);
+		int[] resultA_1 = mergeSortedArrayImproved(arrayA1_1, 3, arrayA2_1, 5);
 		System.out.println("Resultado A: "+Arrays.toString(resultA_1));
 
 		int[] arrayB1_1 = ArrayReader.readArray(directorio1 + "ArrayB1.txt");
 		int[] arrayB2_1 = ArrayReader.readArray(directorio1 + "ArrayB2.txt");
-		int[] resultB_1 = mergeSortedArray(arrayB1_1, 5, arrayB2_1, 5);
+		int[] resultB_1 = mergeSortedArrayImproved(arrayB1_1, 5, arrayB2_1, 5);
 		System.out.println("Resultado B: "+Arrays.toString(resultB_1));
 
 		int[] arrayC1_1 = ArrayReader.readArray(directorio1 + "ArrayC1.txt");
 		int[] arrayC2_1 = ArrayReader.readArray(directorio1 + "ArrayC2.txt");
-		int[] resultC_1 = mergeSortedArray(arrayC1_1, 4, arrayC2_1, 6);
+		int[] resultC_1 = mergeSortedArrayImproved(arrayC1_1, 4, arrayC2_1, 6);
 		System.out.println("Resultado C: "+Arrays.toString(resultC_1));
 
 
