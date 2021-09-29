@@ -101,7 +101,7 @@ public class Practica01{
 					if(board[i][k] == j){
 						verificador = true;
 						break;
-					}
+					} 
 				}
 				if(!verificador){
 					return false;
@@ -124,24 +124,40 @@ public class Practica01{
 	
 	//Algoritmo de la actividad 2, isValidBoard pero mejorado en tiempo.
 	public static boolean isValidBoardImproved(int[][] board){
-    	int length = board.length;
-		for (int i = 0; i < length ; i++) {
-			for (int j = 0; j < length ; j++ ) {
-				boolean verificador = false;
-				// Verifica sobre las filas y columnas.
-				for(int k = 0, h = 0 ; k < length && h < length; k++, h++){
-					if(board[i][k] == j && board[h][i] ==j){
-						verificador = true;
-						break;
-					}
-				}
-				if(!verificador){
-					return false;
-					}
-				}
+		
+    	int length = board.length;     //Como la matriz es cuadrada no tenemos problema con la longitud.
+    	int [] aux = new int [length]; //Usamos un arreglo auxiliar como contador de cada posicion.
+    	int renglones=0, columnas=0;  //Guardamos los elementos de los renglones y columnas de las posiciones.
+    	boolean verificador=true;     //Esto solo es para el return, ya que el metodo devuelve un boolean.
+    	
+		for (int i = 0; i < length ; i++) { //Asi recorremos el numero de renglones
+			
+			if (aux[renglones] >2 || aux[columnas] >2 ) {  //Vemos si en alguna posicion del arreglo auxiliar el incremento es mayor a dos 
+				verificador =false;						//ya que si es mayor a dos significa que hay elementos repetidos en renglones o columnas.
+			}											// Si hay repetidos el verificador se hace falso, elemetos repetidos= false.
+			
+			if(verificador==false){
+				return false;
 			}
-		return true;
-    }
+			
+			if (verificador==false) {//Como ya sabemos que hay repetidos no tiene caso que continue recorriendo la matriz, salimos del
+				break;				//programa en ese momento que encuentra un repetido, lo que ahorra tiempo.
+			}
+			
+			for (int j = 0; j < length ; j++ ) { //Asi recorremos el numero de columnas.
+				renglones = board[i][j];    //Guardamos el numero que esta en x posicion de los renglones.
+				columnas = board[j][i];		//Guardamos el numero que esta en x posicion de las columnas.
+				aux[renglones]++;		//"Contador", el numero que guardamos en renglones es la posicion del arreglo aux que va a aumentar en 1. 
+				aux[columnas]++;  		//"Contador", el numero que guardamos en columnas es la posicion del arreglo aux que va a aumentar en 1.
+				
+			if (aux[renglones] >2 || aux[columnas] >2) break; //Si alguna posicion del arreglo tiene mas de 2 nos saca del for, ya que no tiene
+														//caso seguir recorriendo la matriz porque ya vimos que hay repetidos.
+			if(j==length-1) aux = new int[length]; //Cuando acabamos de recorrer un renglon o una columna por completo, tenemos que quitar los 
+			//contadores en las posiciones que ya teniamos y empezar todos desde cero, ya que recorreremos de nuevo un renglon y una columna.
+			}		
+		}	
+		return true; //Si nunca hay repetidos regresa verdadero.
+	}
 		
 	
 
