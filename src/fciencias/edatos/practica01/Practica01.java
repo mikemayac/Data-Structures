@@ -183,6 +183,37 @@ public class Practica01{
 		}
 	}
 
+	//Algoritmo de la actividad 2, isValidBoard pero mejorado en tiempo.
+	/**
+	* Rota position cantidad de veces los elementos de un arreglo
+	* hacia el vecino izquierdo.
+	* @param num el arreglo de enteros a rotar.
+	* @param position la cantidad de espacios a rotar.
+	*/
+	public static void rotateArrayImproved(int[] num, int position){
+		position  = position % num.length;
+		reversa(num, 0, num.length-1); //Volteamos todo el arreglo.
+		reversa(num, (num.length-1)-position+1, num.length-1); //Volteamos los ultimos k numeros
+		reversa(num, 0, (num.length-1)-position);//Volteamos los primeros n-k numeros 	
+	}
+	//Metodo auxiliar para el ejercicio 3
+	/**
+	* Metodo que nos ayuda a rotar las posiciones de un arrgelo indicandole
+	* donde inicia y donde termina.
+	* @param num el arreglo de enteros a rotar.
+	* @param inicio en que posicion va a inciar a rotar.
+	* @param fin en que posicion va a terminar de fotar
+	*/
+	public static void reversa(int [] num , int inicio, int fin) {
+		while(inicio<fin) {
+			int temp = num[inicio];
+			num[inicio] = num[fin];
+			num[fin] = temp;
+			inicio++;
+			fin--;
+		}
+	}
+	
 	public static void main(String[] args) {
 
 		String directorio1 = "src/fciencias/edatos/practica01/Examples/ArrayExamples/";
@@ -298,7 +329,20 @@ public class Practica01{
 		
 		fin = System.currentTimeMillis();
 		System.out.println("El algoritmo 1 se tardó: "+ (fin - inicio) + " milisegundos.");
+		
+		System.out.println("\nAlgoritmo 2 (Mejora del algoritmo 1 en tiempo).");
+		inicio = System.currentTimeMillis();
 
+		rotateArrayImproved(arrayA1_1, 5);
+		rotateArrayImproved(arrayB1_1, 0);
+		rotateArrayImproved(arrayC1_1, 6);
+
+		System.out.println("Arreglo A1 rotado 5 veces: " + Arrays.toString(arrayA1_1));
+		System.out.println("Arreglo B1 rotado 0 veces: " + Arrays.toString(arrayB1_1));
+		System.out.println("Arreglo C1 rotado 6 veces: " + Arrays.toString(arrayC1_1));
+		
+		fin = System.currentTimeMillis();
+		System.out.println("El algoritmo 2 se tardó: "+ (fin - inicio) + " milisegundos.");
 		System.out.println("\n\nFIN DE EJEMPLOS\n");
 	}
 }
