@@ -196,7 +196,14 @@ public class Practica01{
 		reversa(num, (num.length-1)-position+1, num.length-1); //Volteamos los ultimos k numeros
 		reversa(num, 0, (num.length-1)-position);//Volteamos los primeros n-k numeros 	
 	}
-	
+	//Metodo auxiliar para el ejercicio 3
+	/**
+	* Metodo que nos ayuda a rotar las posiciones de un arrgelo indicandole
+	* donde inicia y donde termina.
+	* @param num el arreglo de enteros a rotar.
+	* @param inicio en que posicion va a inciar a rotar.
+	* @param fin en que posicion va a terminar de fotar
+	*/
 	public static void reversa(int [] num , int inicio, int fin) {
 		while(inicio<fin) {
 			int temp = num[inicio];
