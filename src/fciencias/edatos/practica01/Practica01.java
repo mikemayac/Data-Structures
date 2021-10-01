@@ -2,12 +2,12 @@ import java.util.Arrays;
 
 /**
 * Práctica 1 del curso de Estructuras de Datos.
-* @author Emmanuel Cruz Hernández.
-* @version 2.0 Septiembre 2021.
+* @author Francisco Javier Becerril Lara No Cuenta 317114490 y Joel Miguel Maya Castrejón 417112602 
+* @version 30 Septiembre 2021.
 * @since Laboratorio de Estructuras de Datos 2022-1.
 */
 public class Practica01{
-
+	//Actividad 1
 	/**
 	* Hace la mezcla de dos arreglos ordenados desde la primera posición hasta
 	* una posición límite
@@ -43,6 +43,15 @@ public class Practica01{
 	}
 	
 	//Algoritmo de la actividad 1, mergeSortedArray pero mejorado en tiempo.
+	/**
+	* Hace la mezcla de dos arreglos ordenados desde la primera posición hasta
+	* una posición límite
+	* @param array1 el primer arreglo a mezlar
+	* @param n el límite de mezcla del primer arreglo
+	* @param array2 el segundo arreglo a mezclar
+	* @param m el límite de mezcla del segundo arreglo.
+	* @return un arreglo ordenado de longitud m+n con la mezcla definida.
+	*/
 	public static int[] mergeSortedArrayImproved(int[] array1, int n, int[] array2, int m){
 		if(n > array1.length || m > array2.length)
 			throw new RuntimeException("Límites no válidos");
@@ -84,6 +93,7 @@ public class Practica01{
 		return result;
 	}
 
+	//Actividad 2
     /**
     * Verifica si un tablero contiene los números desde 0 hasta n-1 en cada fila y cada columna.
     * @param board el tablero de nxn que contiene elementos dentro del rango [0, n-1].
@@ -101,7 +111,7 @@ public class Practica01{
 					if(board[i][k] == j){
 						verificador = true;
 						break;
-					}
+					} 
 				}
 				if(!verificador){
 					return false;
@@ -123,28 +133,40 @@ public class Practica01{
 	}
 	
 	//Algoritmo de la actividad 2, isValidBoard pero mejorado en tiempo.
+	/**
+	    * Verifica si un tablero contiene los números desde 0 hasta n-1 en cada fila y cada columna.
+	    * @param board el tablero de nxn que contiene elementos dentro del rango [0, n-1].
+	    * @return verificador si el tablero contiene los números desde 0 hasta n-1 en cada fila y columna,
+		* false en otro caso.
+	    */
 	public static boolean isValidBoardImproved(int[][] board){
-    	int length = board.length;
-		for (int i = 0; i < length ; i++) {
-			for (int j = 0; j < length ; j++ ) {
-				boolean verificador = false;
-				// Verifica sobre las filas y columnas.
-				for(int k = 0, h = 0 ; k < length && h < length; k++, h++){
-					if(board[i][k] == j && board[h][i] ==j){
-						verificador = true;
-						break;
-					}
-				}
-				if(!verificador){
-					return false;
-					}
-				}
+		
+    	int length = board.length;     //Como la matriz es cuadrada no tenemos problema con la longitud.
+    	int [] aux = new int [length]; //Usamos un arreglo auxiliar como contador de cada posicion.
+    	int renglones=0, columnas=0;  //Guardamos los elementos de los renglones y columnas de las posiciones.
+    	boolean verificador=true;     //Esto solo es para el return, ya que el metodo devuelve un boolean.
+    	
+		for (int i = 0; i < length ; i++) { //Asi recorremos el numero de renglones			
+			for (int j = 0; j < length ; j++ ) { //Asi recorremos el numero de columnas.
+				renglones = board[i][j];    //Guardamos el numero que esta en x posicion de los renglones.
+				columnas = board[j][i];		//Guardamos el numero que esta en x posicion de las columnas.
+				aux[renglones]++;		//"Contador", el numero que guardamos en renglones es la posicion del arreglo aux que va a aumentar en 1. 
+				aux[columnas]++;  		//"Contador", el numero que guardamos en columnas es la posicion del arreglo aux que va a aumentar en 1.
+				
+			if (aux[renglones] >2 || aux[columnas] >2) {
+				verificador = false;
+				return verificador; //Si alguna posicion del arreglo tiene mas de 2 nos saca del for, ya que no tiene
 			}
-		return true;
-    }
+														//caso seguir recorriendo la matriz porque ya vimos que hay repetidos.
+			if(j==length-1) aux = new int[length]; //Cuando acabamos de recorrer un renglon o una columna por completo, tenemos que quitar los 
+			//contadores en las posiciones que ya teniamos y empezar todos desde cero, ya que recorreremos de nuevo un renglon y una columna.
+			}		
+		}	
+		return verificador; //Si nunca hay repetidos regresa verdadero.
+	}
 		
 	
-
+	//Actividad 3
 	/**
 	* Rota position cantidad de veces los elementos de un arreglo
 	* hacia el vecino izquierdo.
