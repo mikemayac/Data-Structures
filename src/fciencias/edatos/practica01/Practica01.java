@@ -191,6 +191,7 @@ public class Practica01{
 		// EJEMPLOS DE ACTIVIDAD 1
 		System.out.println("\nEJEMPLOS DE ACTIVIDAD 1\n");
 		System.out.println("Algoritmo 1.");
+	    long inicio = System.currentTimeMillis();
 
 		int[] arrayA1 = ArrayReader.readArray(directorio1 + "ArrayA1.txt");
 		int[] arrayA2 = ArrayReader.readArray(directorio1 + "ArrayA2.txt");
@@ -207,7 +208,12 @@ public class Practica01{
 		int[] resultC = mergeSortedArray(arrayC1, 4, arrayC2, 6);
 		System.out.println("Resultado C: "+Arrays.toString(resultC));
 		
+		long fin = System.currentTimeMillis();
+		System.out.println("El algoritmo 1 se tardó: "+ (fin - inicio) + " milisegundos.");
+		
 		System.out.println("\nAlgoritmo 2 (Mejora del algoritmo 1 en tiempo).");
+		
+		inicio = System.currentTimeMillis();
 
 		int[] arrayA1_1 = ArrayReader.readArray(directorio1 + "ArrayA1.txt");
 		int[] arrayA2_1 = ArrayReader.readArray(directorio1 + "ArrayA2.txt");
@@ -223,11 +229,16 @@ public class Practica01{
 		int[] arrayC2_1 = ArrayReader.readArray(directorio1 + "ArrayC2.txt");
 		int[] resultC_1 = mergeSortedArrayImproved(arrayC1_1, 4, arrayC2_1, 6);
 		System.out.println("Resultado C: "+Arrays.toString(resultC_1));
+		
+		fin = System.currentTimeMillis();
+		System.out.println("El algoritmo 2 se tardó: "+ (fin - inicio) + " milisegundos.");
 
 
 		// EJEMPLOS DE ACTIVIDAD 2
 		System.out.println("\nEJEMPLOS DE ACTIVIDAD 2\n");
 		System.out.println("Algoritmo 1.");
+		
+		inicio = System.currentTimeMillis();
 		
 		int[][] boardA = ArrayReader.readMatrix(directorio2 + "BoardA.txt");
 		boolean boardResultA = isValidBoard(boardA);
@@ -245,8 +256,13 @@ public class Practica01{
 		boolean boardResultD = isValidBoard(boardD);
 		System.out.println("El tablero D es válido: "+boardResultD);
 		
+		fin = System.currentTimeMillis();
+		System.out.println("El algoritmo 1 se tardó: "+ (fin - inicio) + " milisegundos.");
+		
 		System.out.println("\nAlgoritmo 2 (Mejora del algoritmo 1 en tiempo).");
 
+		inicio = System.currentTimeMillis();
+		
 		int[][] boardA1 = ArrayReader.readMatrix(directorio2 + "BoardA.txt");
 		boolean boardResultA1 = isValidBoardImproved(boardA1);
 		System.out.println("El tablero A es válido: "+boardResultA1);
@@ -262,9 +278,15 @@ public class Practica01{
 		int[][] boardD1 = ArrayReader.readMatrix(directorio2 + "BoardD.txt");
 		boolean boardResultD1 = isValidBoardImproved(boardD1);
 		System.out.println("El tablero D es válido: "+boardResultD1);
+		
+		fin = System.currentTimeMillis();
+		System.out.println("El algoritmo 2 se tardó: "+ (fin - inicio) + " milisegundos.");
 
 		// EJEMPLOS DE ACTIVIDAD 3
 		System.out.println("\nEJEMPLOS DE ACTIVIDAD 3\n");
+		System.out.println("Algoritmo 1.");
+		
+		inicio = System.currentTimeMillis();
 
 		rotateArray(arrayA1, 5);
 		rotateArray(arrayB1, 0);
@@ -273,6 +295,9 @@ public class Practica01{
 		System.out.println("Arreglo A1 rotado 5 veces: " + Arrays.toString(arrayA1));
 		System.out.println("Arreglo B1 rotado 0 veces: " + Arrays.toString(arrayB1));
 		System.out.println("Arreglo C1 rotado 6 veces: " + Arrays.toString(arrayC1));
+		
+		fin = System.currentTimeMillis();
+		System.out.println("El algoritmo 1 se tardó: "+ (fin - inicio) + " milisegundos.");
 
 		System.out.println("\n\nFIN DE EJEMPLOS\n");
 	}
