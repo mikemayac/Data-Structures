@@ -1,3 +1,4 @@
+package fciencias.edatos.practica01;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;
@@ -5,8 +6,8 @@ import java.io.FileNotFoundException;
 
 /**
  * Leector de archivos de texto para su conversión a matrices.
-* @author Emmanuel Cruz Hernández.
-* @version 1.0 Septiembre 2021.
+* @author Francisco Javier Becerril Lara No Cuenta 317114490 y Joel Miguel Maya Castrejón 417112602 .
+* @version 30 Septiembre 2021.
 * @since Laboratorio de Estructuras de Datos 2022-1.
 */
 public class ArrayReader {
