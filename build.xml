@@ -7,8 +7,8 @@ Contiene los siguientes comandos:
 * jar - Compila el código fuente *.java y empaqueta los resultados en un archivo
 	ejecutable *.jar
 * doc - Crea el Javadoc del proyecto.
-* Author: Maya Joel-417112602, Becerril Francisco-317114490.  
-* Version: Marzo 2021. -->
+* Author: Francisco Javier Becerril Lara No Cuenta 317114490 y Joel Miguel Maya Castrejón 417112602 
+* Version: 30 Septiembre 2021. -->
 
 <project>
 
