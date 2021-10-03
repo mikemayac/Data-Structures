@@ -1,3 +1,4 @@
+package fciencias.edatos.practica01;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;
