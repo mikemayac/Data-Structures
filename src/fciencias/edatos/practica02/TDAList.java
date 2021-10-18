@@ -1,3 +1,4 @@
+package fciencias.edatos.practica02;
 import java.util.Iterator;
 
 /**
@@ -12,9 +13,9 @@ public interface TDAList<T>{
 	 * Inserta un nuevo elemento <i>e</i> en la posición <i>i</i>.
 	 * @param i la posición donde agregar el elemento.
 	 * @param e el elemento a insertar.
-	 * @throws IndexOutOfBoundException si el índice está fuera de rango.
+	 * @throws IllegalArgumentException si el índice está fuera de rango.
 	 */
-	public void add(int i, T e) throws IndexOutOfBoundsException;
+	public void add(int i, T e) throws IllegalArgumentException;
 
 	/**
 	 * Limpia la lista. Elimina todos los elementos.
@@ -47,7 +48,7 @@ public interface TDAList<T>{
 	 * @return el elemento eliminado.
 	 * @throws IndexOutOfBoundException si el índice está fuera de rango.
 	 */
-	public T remove(int i) throws IndexOutOfBoundsException;
+   public T remove(int i) throws IndexOutOfBoundsException;
 
 	/**
 	 * Regresa la cantidad de elementos contenidos en la lista.
@@ -58,7 +59,7 @@ public interface TDAList<T>{
 	/**
 	 * Revierte los elementos de la lista. Esto es, da la reversa de la lista.
 	 */
-	public void revert();
+	public DoubleLinkedList<T> revert();
 
 	/**
 	 * Da la mitad derecha o izquierda de una lista.
@@ -67,7 +68,7 @@ public interface TDAList<T>{
 	 * false - mitad izquierda.
 	 * @return una nueva lista con la mitad de los elementos.
 	 */
-	public TDAList cut(boolean side);
+	// public TDAList cut(boolean side);
 
 	/**
 	 * Da una cadena con los elementos contenidos en la lista.
