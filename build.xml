@@ -7,7 +7,7 @@ Contiene los siguientes comandos:
 * jar - Compila el código fuente *.java y empaqueta los resultados en un archivo
 	ejecutable *.jar
 * doc - Crea el Javadoc del proyecto.
-* Author: Francisco Javier Becerril Lara No Cuenta 317114490 y Joel Miguel Maya Castrejón 417112602 
+* Author: Francisco Javier Becerril Lara No Cuenta 317114490 y Joel Miguel Maya Castrejón 417112602
 * Version: 30 Septiembre 2021. -->
 
 <project>
@@ -27,18 +27,18 @@ Contiene los siguientes comandos:
     <antcall target="build" />
     <mkdir dir="build/jar" />
     <!-- TODO cambiar el nombre del JAR -->
-    <jar destfile="build/jar/Practica01.jar" basedir="build/classes" >
+    <jar destfile="build/jar/Practica02.jar" basedir="build/classes" >
       <manifest >
 	<attribute name="DependencyFinder" value="main" />
 	<!-- TODO SET MAIN CLASS -->
-	<attribute name="Main-Class" value="fciencias.edatos.practica01.Practica01" />
+	<attribute name="Main-Class" value="fciencias.edatos.practica02.DoubleLinkedList" />
       </manifest >
     </jar >
   </target>
 
   <target name="run" >
     <!-- TODO usar el nombre del JAR que será generado -->
-    <java jar="build/jar/Practica01.jar" fork="true" >
+    <java jar="build/jar/Practica02.jar" fork="true" >
     </java>
   </target >
 
