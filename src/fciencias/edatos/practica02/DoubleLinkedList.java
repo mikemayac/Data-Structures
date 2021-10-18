@@ -269,7 +269,7 @@ public class DoubleLinkedList<T> implements TDAList<T> {
     * @return el elemento eliminado.
     * @throws IndexOutOfBoundException si el índice está fuera de rango.
     */
-  /*  public T remove(int i) throws IndexOutOfBoundsException{
+    public T remove(int i) throws IndexOutOfBoundsException{
       if(i > size()|| i<size()){
         throw new ExcepcionIndiceInvalido("Posicion invalida");
       }
@@ -279,15 +279,25 @@ public class DoubleLinkedList<T> implements TDAList<T> {
       if(i == size()){
         eliminaUltimo();
       }
-      if(i<(size()/2){
-        Nodo aux = cabeza;
-        for (int j = 1; j< i-1 ;j++ ) {
+      Nodo aux = cabeza;
+      if(i<=(size()/2)){
+        for(int j = 1; j< i ;j++ ) {
           aux= aux.siguiente;
         }
         aux.siguiente = aux.siguiente.siguiente;
-        length --;
+        longitud --;
+        return aux.e;
+      }else if(i>=(size()/2)){
+        aux = rabo;
+        for(int k = size()-1; i < k ;k--) {
+          aux= aux.anterior;
       }
-    }*/
+      aux.anterior = aux.anterior.anterior;
+      longitud --;
+      return aux.e;
+      }
+      return aux.e;
+    }
 
     /**
     * Regresa la cantidad de elementos contenidos en la lista.
@@ -316,7 +326,7 @@ public class DoubleLinkedList<T> implements TDAList<T> {
     * false - mitad izquierda.
     * @return una nueva lista con la mitad de los elementos.
     */
-  /*  public TDAList cut(boolean side){
+  /* public TDAList cut(boolean side){
       if(side == true){
         for(int i = 1; i<= (size()/2)%2 ;i++ ){
 

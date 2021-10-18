@@ -48,7 +48,7 @@ public interface TDAList<T>{
 	 * @return el elemento eliminado.
 	 * @throws IndexOutOfBoundException si el índice está fuera de rango.
 	 */
-	//public T remove(int i) throws IndexOutOfBoundsException;
+   public T remove(int i) throws IndexOutOfBoundsException;
 
 	/**
 	 * Regresa la cantidad de elementos contenidos en la lista.
@@ -68,7 +68,7 @@ public interface TDAList<T>{
 	 * false - mitad izquierda.
 	 * @return una nueva lista con la mitad de los elementos.
 	 */
-//	public TDAList cut(boolean side);
+	// public TDAList cut(boolean side);
 
 	/**
 	 * Da una cadena con los elementos contenidos en la lista.
