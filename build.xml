@@ -31,7 +31,7 @@ Contiene los siguientes comandos:
       <manifest >
 	<attribute name="DependencyFinder" value="main" />
 	<!-- TODO SET MAIN CLASS -->
-	<attribute name="Main-Class" value="fciencias.edatos.practica02.DoubleLinkedList" />
+	<attribute name="Main-Class" value="fciencias.edatos.practica02.Practica02" />
       </manifest >
     </jar >
   </target>

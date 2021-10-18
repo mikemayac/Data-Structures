@@ -280,14 +280,12 @@ public class DoubleLinkedList<T> implements TDAList<T> {
         eliminaUltimo();
       }
       if(i<(size()/2){
-        Nodo aux = new Nodo(e);
-        Nodo iterador = cabeza;
+        Nodo aux = cabeza;
         for (int j = 1; j< i-1 ;j++ ) {
-          iterador= iterador.next();
-        }
-        aux.next(iterador.next());
+          aux= aux.siguiente;
+        aux.siguiente = aux.siguiente.siguiente;
+        length --;
       }
-
     }
 
     /**
@@ -319,10 +317,10 @@ public class DoubleLinkedList<T> implements TDAList<T> {
     */
     public TDAList cut(boolean side){
       if(side == true){
-        for (int =  : ) {
+        for(int i = 1; i<= (size()/2)%2 ;i++ ){
 
-        }
-      }
+          }
+       }
     }
 
     /**
