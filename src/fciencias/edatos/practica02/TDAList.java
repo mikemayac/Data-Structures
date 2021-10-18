@@ -1,4 +1,4 @@
-package src.fciencias.edatos.practica02;
+package fciencias.edatos.practica02;
 import java.util.Iterator;
 
 /**
@@ -13,9 +13,9 @@ public interface TDAList<T>{
 	 * Inserta un nuevo elemento <i>e</i> en la posición <i>i</i>.
 	 * @param i la posición donde agregar el elemento.
 	 * @param e el elemento a insertar.
-	 * @throws IndexOutOfBoundException si el índice está fuera de rango.
+	 * @throws IllegalArgumentException si el índice está fuera de rango.
 	 */
-	public void add(int i, T e) throws IndexOutOfBoundsException;
+	public void add(int i, T e) throws IllegalArgumentException;
 
 	/**
 	 * Limpia la lista. Elimina todos los elementos.
@@ -48,7 +48,7 @@ public interface TDAList<T>{
 	 * @return el elemento eliminado.
 	 * @throws IndexOutOfBoundException si el índice está fuera de rango.
 	 */
-	public T remove(int i) throws IndexOutOfBoundsException;
+	//public T remove(int i) throws IndexOutOfBoundsException;
 
 	/**
 	 * Regresa la cantidad de elementos contenidos en la lista.

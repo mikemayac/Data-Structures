@@ -1,4 +1,4 @@
-package src.fciencias.edatos.practica02;
+package fciencias.edatos.practica02;
 import java.util.Scanner;
 
 /**

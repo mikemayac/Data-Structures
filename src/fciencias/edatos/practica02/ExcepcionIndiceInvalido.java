@@ -1,4 +1,4 @@
-package src.fciencias.edatos.practica02;
+package fciencias.edatos.practica02;
 /**
  * Clase para excepciones de índices de lista inválidos.
  */

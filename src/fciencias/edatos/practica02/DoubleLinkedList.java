@@ -1,4 +1,4 @@
-package src.fciencias.edatos.practica02;
+package fciencias.edatos.practica02;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -269,7 +269,7 @@ public class DoubleLinkedList<T> implements TDAList<T> {
     * @return el elemento eliminado.
     * @throws IndexOutOfBoundException si el índice está fuera de rango.
     */
-    public T remove(int i) throws IndexOutOfBoundsException{
+  /*  public T remove(int i) throws IndexOutOfBoundsException{
       if(i > size()|| i<size()){
         throw new ExcepcionIndiceInvalido("Posicion invalida");
       }
@@ -283,10 +283,11 @@ public class DoubleLinkedList<T> implements TDAList<T> {
         Nodo aux = cabeza;
         for (int j = 1; j< i-1 ;j++ ) {
           aux= aux.siguiente;
+        }
         aux.siguiente = aux.siguiente.siguiente;
         length --;
       }
-    }
+    }*/
 
     /**
     * Regresa la cantidad de elementos contenidos en la lista.
@@ -315,13 +316,13 @@ public class DoubleLinkedList<T> implements TDAList<T> {
     * false - mitad izquierda.
     * @return una nueva lista con la mitad de los elementos.
     */
-    public TDAList cut(boolean side){
+  /*  public TDAList cut(boolean side){
       if(side == true){
         for(int i = 1; i<= (size()/2)%2 ;i++ ){
 
           }
        }
-    }
+    }*/
 
     /**
     * Da una cadena con los elementos contenidos en la lista.
