@@ -1,6 +1,13 @@
 package fciencias.edatos.practica02;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+/**
+* Práctica 2 del curso de Estructuras de Datos.
+* @author Francisco Javier Becerril Lara No Cuenta 317114490 y Joel Miguel Maya Castrejón 417112602
+* @version 17 Octubre 2021.
+* @since Laboratorio de Estructuras de Datos 2022-1.
+*/
+
 
 /**
  * Interfaz para iteradores de lista. Un iterador de lista se puede visualizar

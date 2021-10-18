@@ -59,7 +59,7 @@ public interface TDAList<T>{
 	/**
 	 * Revierte los elementos de la lista. Esto es, da la reversa de la lista.
 	 */
-	public void revert();
+	public DoubleLinkedList<T> revert();
 
 	/**
 	 * Da la mitad derecha o izquierda de una lista.

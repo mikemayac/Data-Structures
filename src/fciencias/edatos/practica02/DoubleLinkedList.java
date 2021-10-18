@@ -2,7 +2,12 @@ package fciencias.edatos.practica02;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-
+/**
+* Práctica 2 del curso de Estructuras de Datos.
+* @author Francisco Javier Becerril Lara No Cuenta 317114490 y Joel Miguel Maya Castrejón 417112602
+* @version 17 Octubre 2021.
+* @since Laboratorio de Estructuras de Datos 2022-1.
+*/
 
 public class DoubleLinkedList<T> implements TDAList<T> {
 
@@ -137,7 +142,7 @@ public class DoubleLinkedList<T> implements TDAList<T> {
     */
     public void add(int i, T e){
       if(e == null){
-        throw new IllegalArgumentException("e Incorrecto");
+        throw new IllegalArgumentException("elemento Incorrecto");
       }
       if(isEmpty()){
         Nodo n = new Nodo(e);
@@ -187,7 +192,7 @@ public class DoubleLinkedList<T> implements TDAList<T> {
     /**
     * Verifica si un elemento está contenido en la lista.
     * @param e el elemento a verificar si está contenido.
-    * @return true si el elemento está contenid, false en otro caso.
+    * @return true si el elemento está contenido, false en otro caso.
     */
     public boolean contains(T e){
       Nodo n = buscaNodo(cabeza, e);
@@ -267,10 +272,10 @@ public class DoubleLinkedList<T> implements TDAList<T> {
     * Elimina el elemento en la posición <i>i</i>.
     * @param i el índice del elemento a eliminar.
     * @return el elemento eliminado.
-    * @throws IndexOutOfBoundException si el índice está fuera de rango.
+    * @throws ExcepcionIndiceInvalido si el índice está fuera de rango.
     */
-    public T remove(int i) throws IndexOutOfBoundsException{
-      if(i > size()|| i<size()){
+    public T remove(int i) throws ExcepcionIndiceInvalido{
+      if( i > size() || i < 0){
         throw new ExcepcionIndiceInvalido("Posicion invalida");
       }
       if(i == 0){
@@ -310,13 +315,14 @@ public class DoubleLinkedList<T> implements TDAList<T> {
     /**
     * Revierte los elementos de la lista. Esto es, da la reversa de la lista.
     */
-    public void revert(){
+    public DoubleLinkedList<T> revert(){
       DoubleLinkedList <T> r = new DoubleLinkedList();
       Nodo aux = cabeza;
       while(aux != null){
         r.agregaInicio(aux.e);
         aux = aux.siguiente;
       }
+      return r;
     }
 
     /**
@@ -360,7 +366,7 @@ public class DoubleLinkedList<T> implements TDAList<T> {
     @Override public boolean equals(Object objeto) {
         if (objeto == null || getClass() != objeto.getClass())
             return false;
-      @SuppressWarnings("unchecked") DoubleLinkedList lista = (DoubleLinkedList)objeto;
+      @SuppressWarnings("unchecked") DoubleLinkedList<T> lista = (DoubleLinkedList<T>)objeto;
       if(this.longitud != lista.longitud || lista == null){
         return false;
       }

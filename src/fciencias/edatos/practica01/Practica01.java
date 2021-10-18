@@ -3,8 +3,8 @@ import java.util.Arrays;
 
 /**
 * Práctica 1 del curso de Estructuras de Datos.
-* @author Francisco Javier Becerril Lara No Cuenta 317114490 y Joel Miguel Maya Castrejón 417112602 
-* @version 30 Septiembre 2021.
+* @author Francisco Javier Becerril Lara No Cuenta 317114490 y Joel Miguel Maya Castrejón 417112602
+* @version 17 Octubre 2021.
 * @since Laboratorio de Estructuras de Datos 2022-1.
 */
 public class Practica01{
@@ -42,7 +42,7 @@ public class Practica01{
 
 		return result;
 	}
-	
+
 	//Algoritmo de la actividad 1, mergeSortedArray pero mejorado en tiempo.
 	/**
 	* Hace la mezcla de dos arreglos ordenados desde la primera posición hasta
@@ -58,39 +58,39 @@ public class Practica01{
 			throw new RuntimeException("Límites no válidos");
 
 		int[] result = new int[n + m];
-		
+
 		int i=0; //Iterador i será para el array1
 		int j=0; //Iterador j será para el array2
 		int k=0; //Iterador k será para el arreglo result
-		
+
 		while (i<n && j<m) {
 			if (array1[i] < array2[j]) { //Si el elemento de array1 es menor que array2
 				result[k] = array1[i];	//Copiamos el elemento de array1
 				i++;					//Avanzamos una posicion en el array1
-				
+
 			} else {					//Si el elemento de array2 es menor que array1
 				result[k] = array2[j]; //Copiamos el elemento de array2
 				j++;				   //Avanzamos una posicion en el array2.
 			}
 			k++;                      //Avanzamos una posicion en el arreglo result.
 		}
-		//Cuando salimos del while es por que un arreglo ya sea el array1 o array2 se a 
+		//Cuando salimos del while es por que un arreglo ya sea el array1 o array2 se a
 		//copiado completamente, pero falta por copiarse elementos de algun arreglo aun.
-		
+
 		if (i==n) { //Significa que ya copiamos todos los elementos de array1, falta el array2.
 			while (j<m) { //Mientras no hayamos terminado de copiar todos los elementos de array2.
 				result[k] = array2[j]; //Copiamos el elemento de array2 en result.
 				j++; //Avanzamos una posicion en array2
 				k++; //Avanzamos una posicion en result.
 			}
-		} 
+		}
 		else { //Entramos en la condicion que ya copiamos todo el array2, falta el array1.
 			while (i<n) { //Mientras no hayamos terminado de copiar todos los elementos de array1.
 				result[k] = array1[i]; //Copiamos el elemento de array1 en result.
 				i++; //Avanzamos una posicion en array1.
 				k++; //Avanzamos una posicion en result.
 			}
-		}	
+		}
 		return result;
 	}
 
@@ -101,7 +101,7 @@ public class Practica01{
     * @return true si el tablero contiene los números desde 0 hasta n-1 en cada fila y columna,
 	* false en otro caso.
     */
-    
+
 	public static boolean isValidBoard(int[][] board){
     	int length = board.length;
 		for (int i = 0; i < length ; i++) {
@@ -112,7 +112,7 @@ public class Practica01{
 					if(board[i][k] == j){
 						verificador = true;
 						break;
-					} 
+					}
 				}
 				if(!verificador){
 					return false;
@@ -132,7 +132,7 @@ public class Practica01{
 		}
 		return true;
 	}
-	
+
 	//Algoritmo de la actividad 2, isValidBoard pero mejorado en tiempo.
 	/**
 	    * Verifica si un tablero contiene los números desde 0 hasta n-1 en cada fila y cada columna.
@@ -141,32 +141,32 @@ public class Practica01{
 		* false en otro caso.
 	    */
 	public static boolean isValidBoardImproved(int[][] board){
-		
+
     	int length = board.length;     //Como la matriz es cuadrada no tenemos problema con la longitud.
     	int [] aux = new int [length]; //Usamos un arreglo auxiliar como contador de cada posicion.
     	int renglones=0, columnas=0;  //Guardamos los elementos de los renglones y columnas de las posiciones.
     	boolean verificador=true;     //Esto solo es para el return, ya que el metodo devuelve un boolean.
-    	
-		for (int i = 0; i < length ; i++) { //Asi recorremos el numero de renglones			
+
+		for (int i = 0; i < length ; i++) { //Asi recorremos el numero de renglones
 			for (int j = 0; j < length ; j++ ) { //Asi recorremos el numero de columnas.
 				renglones = board[i][j];    //Guardamos el numero que esta en x posicion de los renglones.
 				columnas = board[j][i];		//Guardamos el numero que esta en x posicion de las columnas.
-				aux[renglones]++;		//"Contador", el numero que guardamos en renglones es la posicion del arreglo aux que va a aumentar en 1. 
+				aux[renglones]++;		//"Contador", el numero que guardamos en renglones es la posicion del arreglo aux que va a aumentar en 1.
 				aux[columnas]++;  		//"Contador", el numero que guardamos en columnas es la posicion del arreglo aux que va a aumentar en 1.
-				
+
 			if (aux[renglones] >2 || aux[columnas] >2) {
 				verificador = false;
 				return verificador; //Si alguna posicion del arreglo tiene mas de 2 nos saca del for, ya que no tiene
 			}
 														//caso seguir recorriendo la matriz porque ya vimos que hay repetidos.
-			if(j==length-1) aux = new int[length]; //Cuando acabamos de recorrer un renglon o una columna por completo, tenemos que quitar los 
+			if(j==length-1) aux = new int[length]; //Cuando acabamos de recorrer un renglon o una columna por completo, tenemos que quitar los
 			//contadores en las posiciones que ya teniamos y empezar todos desde cero, ya que recorreremos de nuevo un renglon y una columna.
-			}		
-		}	
+			}
+		}
 		return verificador; //Si nunca hay repetidos regresa verdadero.
 	}
-		
-	
+
+
 	//Actividad 3
 	/**
 	* Rota position cantidad de veces los elementos de un arreglo
@@ -195,7 +195,7 @@ public class Practica01{
 		position  = position % num.length;
 		reversa(num, 0, num.length-1); //Volteamos todo el arreglo.
 		reversa(num, (num.length-1)-position+1, num.length-1); //Volteamos los ultimos k numeros
-		reversa(num, 0, (num.length-1)-position);//Volteamos los primeros n-k numeros 	
+		reversa(num, 0, (num.length-1)-position);//Volteamos los primeros n-k numeros
 	}
 	//Metodo auxiliar para el ejercicio 3
 	/**
@@ -214,7 +214,7 @@ public class Practica01{
 			fin--;
 		}
 	}
-	
+
 	public static void main(String[] args) {
 
 		String directorio1 = "src/fciencias/edatos/practica01/Tests/ArrayTests/";
