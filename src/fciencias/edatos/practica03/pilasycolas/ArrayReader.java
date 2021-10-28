@@ -1,3 +1,4 @@
+package fciencias.edatos.practica03.pilasycolas;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;
@@ -27,7 +28,7 @@ public class ArrayReader {
             // Se leen las dimensiones del laberinto
             int h = Integer.valueOf(dimensions[0]), w = Integer.valueOf(dimensions[1]);
             Box[][] result = new Box[h][w];
-            
+
             String line = null;
             int index = 0;
             while((line = reader.readLine()) != null){
@@ -38,7 +39,7 @@ public class ArrayReader {
                 // Depende de como definas el constructor de Box ajusta la siguiente linea
                 //result[row][colum] = new Box(row, colum);
             }
-            
+
             return result;
         } catch(FileNotFoundException fnfe){
             System.out.println("ARCHIVO "+name+" NO ENCONTRADO");
