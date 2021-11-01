@@ -7,7 +7,7 @@ package fciencias.edatos.practica03.pilasycolas;
  * @version 1.0 Octubre 2021.
  * @since Estructuras de datos 2021-2.
  */
-public class Queue<T> extends DoubleLinkedList<T> implements TDAQueue<T>{
+public class Queue<T> implements TDAQueue<T>{
 
     /** Lista */
     private DoubleLinkedList<T> lista = new DoubleLinkedList();

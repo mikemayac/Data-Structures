@@ -9,7 +9,7 @@ import java.util.EmptyStackException;
  * @version 1.0 Octubre 2021.
  * @since Estructuras de datos 2021-2.
  */
-public class Stack<T> extends DoubleLinkedList<T> implements TDAStack<T> {
+public class Stack<T> implements TDAStack<T> {
 
     /** Lista base */
     public DoubleLinkedList<T> list = new DoubleLinkedList();

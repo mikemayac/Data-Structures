@@ -1,7 +1,7 @@
 package fciencias.edatos.practica03.pilasycolas;
 
 
-public class Box extends Queue<T>{
+public class Box{
   /**
 	 * Verifica si la casilla es una pared.
 	 * @return true si la casilla representa una pared.
