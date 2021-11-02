@@ -2,41 +2,36 @@ package fciencias.edatos.practica03.pilasycolas;
 
 
 public class Box{
-  /**
-	 * Verifica si la casilla es una pared.
-	 * @return true si la casilla representa una pared.
-   * @return false si representa una casilla disponible para buscar.
-	 */
-   public boolean wall(){
-
-  }
-
-   /**
- 	 * Verifica si la casilla es una pared.
- 	 * @return true si la casilla ya fue visitada.
- 	 */
-  public boolean visited(){
-
+  private class Casilla{
+    public boolean wall;
+    public boolean visited;
+     public Casilla(boolean wall, boolean visited){
+       this.wall= wall;
+       this.visited=visited;
+     }
   }
 
   /**
 	 * Permite saber si una casilla es pared o no.
    */
-  public void isWall(){
-
+  public boolean isWall(){
+    return wall != false;
   }
+
 
   /**
    * Permite saber si una casilla está visitada o no.
    */
-  public void isVisited(){
-
+  public boolean isVisited(){
+    return visited != false;
   }
 
   /**
   * Visita una casilla.
   */
  public void Visit(){
-
+   if(isVisited()){
+      
+   }
  }
 }
