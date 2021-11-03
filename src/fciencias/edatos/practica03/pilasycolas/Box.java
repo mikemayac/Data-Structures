@@ -1,4 +1,4 @@
-package fciencias.edatos.practica03.pilasycolas;
+/*package fciencias.edatos.practica03.pilasycolas;
 
 import java.util.Random;
 import java.util.Arrays;
@@ -12,9 +12,9 @@ public class Box{
      }
 
 
-  /**
+  **
 	 * Permite saber si una casilla es pared o no.
-   */
+   *
   public boolean isWall(){
     if(wall != false){
       return wall;
@@ -25,7 +25,7 @@ public class Box{
 
   /**
    * Permite saber si una casilla está visitada o no.
-   */
+   *
   public boolean isVisited(){
     if(visited != false ){
       return true;
@@ -35,7 +35,9 @@ public class Box{
 
   /**
   * Visita una casilla.
-  */
+  *
  public void Visit(){
  }
+ *
 }
+*/
