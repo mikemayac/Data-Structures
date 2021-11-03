@@ -12,7 +12,7 @@ import java.util.EmptyStackException;
 public class Stack<T> implements TDAStack<T> {
 
     /** Lista base */
-    public DoubleLinkedList<T> list = new DoubleLinkedList();
+    public DoubleLinkedList<T> list = new DoubleLinkedList<>();
 
     /**
      * Limpia la pila. Elimina todos los elementos.

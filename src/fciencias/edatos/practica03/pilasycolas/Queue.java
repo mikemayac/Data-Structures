@@ -10,7 +10,7 @@ package fciencias.edatos.practica03.pilasycolas;
 public class Queue<T> implements TDAQueue<T>{
 
     /** Lista */
-    private DoubleLinkedList<T> lista = new DoubleLinkedList();
+    private DoubleLinkedList<T> lista = new DoubleLinkedList<>();
 
     /**
   	 * Limpia la cola. Elimina todos los elementos.
