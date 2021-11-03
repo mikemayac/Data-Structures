@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 * @author Emmanuel Cruz Hernández.
 * @version 1.0 Septiembre 2021.
 * @since Laboratorio de Estructuras de Datos 2022-1.
-*/
+*
 public class ArrayReader {
 
     /*
@@ -21,7 +21,7 @@ public class ArrayReader {
      * Lee una matriz de un archivo de texto.
      * @param name el nombre del archivo.
      * @return una matriz de enteros.
-     */
+     *
     public static Box[][] readMatrix(String name){
         try(BufferedReader reader = new BufferedReader(new FileReader(name))){
             String[] dimensions = reader.readLine().split(",");
@@ -49,3 +49,4 @@ public class ArrayReader {
     }
 
 }
+*/
