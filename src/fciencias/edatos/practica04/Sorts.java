@@ -97,5 +97,58 @@ public class Sorts{
 		return 0;
 	}
 
+	/**
+		 * Ordena un arreglo de forma ascendente con merge sort.
+		 * @param arr el arreglo a ordenar.
+		 */
+		public static void mergeSort(int[] arr){
+			mergeSort(arr, 0, arr.length-1);
+		}
+
+		/**
+		 * Auxiliar de mergeSort para dividir y mezclar.
+		 * @param arr el arreglo con los elementos a dividir y mezclar.
+		 * @param lo el índice de inicio a modificación.
+		 * @param hi el índice del último elemento a modificación.
+		 */
+		private static void mergeSort(int[] arr, int lo, int hi){
+			// Cuando ya esta ordenado el fragmento de lo hasta hi
+			if(hi <= lo)
+				return;
+
+			// La mitad del corte del arreglo
+			int mid = lo + (hi-lo) / 2;
+
+			mergeSort(arr, lo, mid);
+			mergeSort(arr, mid+1, hi);
+
+			merge(arr, lo, mid, hi);
+		}
+
+		/**
+		 * Mezcla dos arreglos, ordenando de menor a mayor.
+		 * @param arr el arreglo con los elementos a modificar.
+		 * @param lo el inicio de la primera mitad.
+		 * @param mid el índice de la mitad del subarreglo.
+		 * @param hi el índice del último elemento.
+		 */
+		private static void merge(int[] arr, int lo, int mid, int hi){
+			int i = lo;
+			int j = mid+1;
+			int aux1[] = new int[i];
+			int aux2[] = new int[j];
+
+			for(int k = lo ; k <= hi; k++){
+				// Si ya nos acabamos los elementos de la primera mitad
+				if(i > mid)
+					arr[k] = aux2[j++];
+				else if(j > hi) // Si ya nos acabamos la segunda mitad
+					arr[k] = aux1[i++];
+				else if(aux2[j] < aux1[i]) // El menor está en la primera mitad
+					arr[k] = aux2[j++];
+				else // El mayor está en la segunda mitad
+					arr[k] = aux1[i++];
+			}
+		}
 
 }
