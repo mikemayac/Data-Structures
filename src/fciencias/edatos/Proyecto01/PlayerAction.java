@@ -3,6 +3,34 @@ import java.util.Scanner;
 
 public class PlayerAction {
 
+
+	/**
+	 *
+	 *  Obtiene un índice válido de una tarjeta que debe ser eliminada de computerDeck.
+	 *  Nota: este método no comprueba que la entrada sea efectivamente un número entero 
+	 *  y se bloqueará si se proporciona otra cosa.
+	 * 
+	 *  @return el input valido.
+	 */
+	public static int getValidInput( ){
+		int sizeComputerDeck = Game.sizeComputerDeck();
+		System.out.print("Tengo " + sizeComputerDeck + " cartas. Mi primer carta es la 1 y mi ultima carta es ");
+		System.out.println(sizeComputerDeck + " , que carta vas a querer ?");
+		System.out.println("Digita un entero entre 1 y " + sizeComputerDeck + ": ");
+        Scanner sc = new Scanner(System.in);
+		int position = sc.nextInt();
+		sc.nextLine();
+
+		while (!(position >= 1 && position <= sizeComputerDeck)) {
+			System.out.println("Vuelve a introducir un número. Solo puedes introducir numeros enteros entre 1 y "
+			+ sizeComputerDeck + ": ");
+			position = sc.nextInt();
+			sc.nextLine();
+		}
+		
+		return position;
+	}
+
     /**
 	 *
 	 *  Elimina todos los pares de cartas del array deckOfCards, que actualmente 
@@ -18,13 +46,15 @@ public class PlayerAction {
 		String[] noPairs = new String[deckOfCards.length];
 		int noPairsSize = 0;
 
+		sortArray(deckOfCards, currentSize);
+
 		int i = 0;
 		while (i < currentSize - 1) {
 			String card1 = deckOfCards[i];
 			String card2 = deckOfCards[i + 1];
-			if (card1.charAt(0) == card2.charAt(0) && card1.charAt(1) == card2.charAt(1)) { // if 10s need to compare first two chars
+			if (card1.charAt(0) == card2.charAt(0) && card1.charAt(1) == card2.charAt(1)) { 
 				i++;
-			} else if (card1.charAt(0) == card2.charAt(0)) { // if not 10, it is enough to compare first chars
+			} else if (card1.charAt(0) == card2.charAt(0)) { 
 				i++;
 			} else {
 				noPairsSize = appendItem(noPairs, noPairsSize, deckOfCards[i]);
@@ -43,32 +73,26 @@ public class PlayerAction {
 		return noPairsSize;
 	}
 
-    /**
-	 *
-	 *  Obtiene un índice válido de una tarjeta que debe ser eliminada de computerDeck.
-	 *  Nota: este método no comprueba que la entrada sea efectivamente un número entero 
-	 *  y se bloqueará si se proporciona otra cosa.
-	 * 
-	 *  @return the valid input.
-	 */
-	public static int getValidInput(Deck deck ){
-		
-		System.out.print("Tengo " + deck.getSizeComputerDeck() + " cartas. Mi primer carta es la 1 y mi ultima carta es ");
-		System.out.println(deck.getSizeComputerDeck() + " , que carta vas a querer ?");
-		System.out.println("Digita un entero entre 1 y " + deck.getSizeComputerDeck() + ": ");
-        Scanner sc = new Scanner(System.in);
-		int position = sc.nextInt();
-		sc.nextLine();
-
-		while (!(position >= 1 && position <= deck.getSizeComputerDeck())) {
-			System.out.println("Vuelve a introducir un número. Solo puedes introducir numeros enteros entre 1 y " + deck.getSizeComputerDeck() + ": ");
-			position = sc.nextInt();
-			sc.nextLine();
-		}
-		
-		return position;
+	/** 
+     * Hace una ordenación lexicográfica de arrayOfStrings. 
+     * Simplemente se basa en el método sort(Object[])
+	 * de java.util.Arrays. 
+	 * Teniendo en cuenta que ordena en orden lexicográfico, por lo que 
+	 * "10" está antes que "2", "A" está antes que "Q", etc. 
+     * 
+     *   @param arrayOfStrings el arreglo de strings
+     *   @param currentSize el número de cadenas en el arrayOfStrings,
+     * almacenado desde arrayOfStrings[0] hasta arrayOfStrings[currentSize-1] 
+     */
+    public static void sortArray(String[] arrayOfStrings, int currentSize){
+        if( arrayOfStrings == null || currentSize > arrayOfStrings.length) {
+	    System.out.println("ArrayStringsTools.sortArray: wrong call");
+	    return ;
+	}
+	java.util.Arrays.sort(arrayOfStrings, 0, currentSize );
 	}
 
+    
     /** 
      * 
 	 * Barajea aleatoriamente el arrayOfStrings
@@ -109,7 +133,14 @@ public class PlayerAction {
      */
 
     public static int removeItemByIndex(String[] arrayOfStrings, int currentSize, int itemToRemove){
-    
+		
+		if( arrayOfStrings == null || currentSize > arrayOfStrings.length) {
+			return currentSize;
+		}
+		if( itemToRemove < 0 || itemToRemove >= currentSize ) {
+			return currentSize;
+		}
+
         int i;
         for( i = itemToRemove; i < currentSize-1; i++){
             arrayOfStrings[i] = arrayOfStrings[i+1];
@@ -132,6 +163,13 @@ public class PlayerAction {
 
     public static int appendItem(String[] arrayOfStrings, int currentSize, String itemToAdd){
 
+		if( arrayOfStrings == null || currentSize > arrayOfStrings.length) {
+			return currentSize;
+		}
+	
+		if( currentSize == arrayOfStrings.length) {
+			return currentSize;
+		}
 	arrayOfStrings[currentSize++]=itemToAdd;
 	return currentSize;
 	} 	

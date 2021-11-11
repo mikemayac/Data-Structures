@@ -62,11 +62,9 @@ public class Deck {
 
         // Vamos a tener 52 cartas en la baraja menos una, osea 51 cartas.
         sizeDeck = suits.length * ranks.length - 1;
-        System.out.println(sizeDeck);
 
         // Creamos el deck con 51 cartas.
         this.deck = new String[sizeDeck];
-        System.out.println(deck);
 
         int counter = 0;
 
@@ -98,15 +96,6 @@ public class Deck {
     }
 
     /**
-     * 
-     * @return Nos dice el numero actual de cartas que hay en el deck de la
-     *         computadora.
-     */
-    public int getSizeComputerDeck() {
-        return this.sizeComputerDeck;
-    }
-
-    /**
      * @return Regresa el deck completo de cartas.
      */
     public String[] getDeck() {
@@ -135,26 +124,37 @@ public class Deck {
      */
     public void dealCards() {
         // Deck del jugador y de la maquina.
-        this.playerDeck = new String[sizeDeck];
-        this.computerDeck = new String[sizeDeck];
+        playerDeck = new String[sizeDeck];
+        computerDeck = new String[sizeDeck];
 
         String item;
 
         while (sizeDeck > 1) {
             item = deck[sizeDeck - 1];
-            sizeDeck = PlayerAction.removeItemByIndex(this.deck, sizeDeck, sizeDeck - 1);
+            sizeDeck = PlayerAction.removeItemByIndex(deck, sizeDeck, sizeDeck - 1);
             sizePlayerDeck = PlayerAction.appendItem(playerDeck, sizePlayerDeck, item);
 
             item = deck[sizeDeck - 1];
-            sizeDeck = PlayerAction.removeItemByIndex(this.deck, sizeDeck, sizeDeck - 1);
+            sizeDeck = PlayerAction.removeItemByIndex(deck, sizeDeck, sizeDeck - 1);
             sizeComputerDeck = PlayerAction.appendItem(computerDeck, sizeComputerDeck, item);
         }
 
+        
+
         // Reparte la última carta restante
-        item = this.deck[sizeDeck - 1];
-        sizeDeck = PlayerAction.removeItemByIndex(this.deck, sizeDeck, sizeDeck - 1);
+        item = deck[sizeDeck - 1];
+        sizeDeck = PlayerAction.removeItemByIndex(deck, sizeDeck, sizeDeck - 1);
         sizePlayerDeck = PlayerAction.appendItem(playerDeck, sizePlayerDeck, item);
 
+    }
+
+    /**
+     * 
+     * @return Nos dice el numero actual de cartas que hay en el deck de la
+     *         computadora.
+     */
+    public int getSizeComputerDeck() {
+        return sizeComputerDeck;
     }
 
 }

@@ -3,7 +3,11 @@ import java.util.Random;
 
 
 public class Game {
+
+
+	static int sizeComputerDeck ;
     /**
+
 	 * 
 	 *  Metodo de la implementacion del juego
 	 */
@@ -20,7 +24,7 @@ public class Game {
 		System.out.println("Por cierto, como robot no puedo ver las cartas.");
 
 		System.out.println("Se van a descartar todos los pares de tu deck. Yo haré lo mismo.");
-        int sizeComputerDeck = deck.getSizeComputerDeck();
+        sizeComputerDeck = deck.getSizeComputerDeck();
 		sizeComputerDeck = PlayerAction.removePairs(deck.getComputerDeck(), deck.getSizeComputerDeck());
         
 		 int sizePlayerDeck = deck.getSizePlayerDeck();
@@ -37,22 +41,14 @@ public class Game {
 				PlayerAction.printArray(deck.getPlayerDeck(), sizePlayerDeck);
 
 				System.out.println("");
-				int card_position = PlayerAction.getValidInput(deck);
+				int card_position = PlayerAction.getValidInput();
+
 
                 String [] computerDeck = deck.getComputerDeck();
-				String item = computerDeck[card_position - 1];
-				sizeComputerDeck = PlayerAction.removeItemByIndex(computerDeck, sizeComputerDeck, card_position - 1); //this is valid since cards are unique
+				String item =  computerDeck[card_position - 1];
+				sizeComputerDeck = PlayerAction.removeItemByIndex(deck.getComputerDeck(), sizeComputerDeck, card_position - 1); //this is valid since cards are unique
 
-				// handled the four endings of ordinals in english
-				String[] englishOrdinalsEnd = {"er", "nda", "er", "ta"};
-				int ordIndex;
-				if (card_position > 3) {
-					ordIndex = 3;
-				} else {
-					ordIndex = card_position - 1;
-				}
-
-				System.out.println("Pediste mi " + card_position + englishOrdinalsEnd[ordIndex] + " carta.");
+				System.out.println("Pediste mi carta " + card_position);
 
 				System.out.println("Aqui esta es el " + item);
 
@@ -67,13 +63,13 @@ public class Game {
 				PlayerAction.printArray(deck.getPlayerDeck(), sizePlayerDeck);
 				System.out.println("");
 				roundParity = 1;
-                                System.out.println("Press Enter to Continue.");
+                                System.out.println("Preciona ENTER para continuar.");
 	                        Scanner scanner = new Scanner(System.in);
                             scanner.nextLine();
 
 			} else {
 				System.out.println("***********************************************************");
-				System.out.println("My turn.\n");
+				System.out.println("Mi turno.\n");
 
                 Random generator = new Random();
 				int cardIndex = generator.nextInt(sizePlayerDeck);
@@ -83,16 +79,8 @@ public class Game {
 				sizeComputerDeck = PlayerAction.appendItem(deck.getComputerDeck(), sizeComputerDeck, item);
 				sizeComputerDeck = PlayerAction.removePairs(deck.getComputerDeck(), sizeComputerDeck);
 
-				// handled the four endings of ordinals in english
-				String[] englishOrdinalsEnd = {"er", "nda", "er", "ta"};
-				int ordIndex;
-				if (cardIndex > 2) {
-					ordIndex = 3;
-				} else {
-					ordIndex = cardIndex;
-				}
 
-				System.out.println("Tomé tu " + (cardIndex + 1) + englishOrdinalsEnd[ordIndex] + " carta.");
+				System.out.println("Tomé tu carta en la posición " + (cardIndex + 1) );
 
 				roundParity = 0;
                                 System.out.println("Presiona ENTER para continuar.");
@@ -109,8 +97,14 @@ public class Game {
 			System.out.println("***********************************************************");
 			System.out.println("Ya no tienes mas cartas en tu mazo");
 			System.out.println("Felicidades, haz ganado");
-		}
+		}	
 }
+
+
+		public static  int sizeComputerDeck(){
+			return sizeComputerDeck;
+		}
+
 
 
 public static void main(String[] args){
