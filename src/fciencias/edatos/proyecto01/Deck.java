@@ -1,4 +1,10 @@
-
+package fciencias.edatos.proyecto01;
+/**
+* Proyecto 01 del curso de Estructuras de Datos.
+* @author Francisco Javier Becerril Lara No Cuenta 317114490 y Joel Miguel Maya Castrejón 417112602
+* @version 11 Noviembre 2021.
+* @since Laboratorio de Estructuras de Datos 2022-1.
+*/
 public class Deck {
 
     /**
@@ -80,7 +86,7 @@ public class Deck {
     }
 
     /**
-     * 
+     *
      * @return Nos dice el numero actual de cartas que hay en el deck.
      */
     public int getSizeDeck() {
@@ -88,7 +94,7 @@ public class Deck {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public String[] getComputerDeck() {
@@ -103,7 +109,7 @@ public class Deck {
     }
 
     /**
-     * 
+     *
      * @return el deck del jugador
      */
     public String[] getPlayerDeck() {
@@ -111,7 +117,7 @@ public class Deck {
     }
 
     /**
-     * 
+     *
      * @return el tamaño del deck del jugador
      */
     public int getSizePlayerDeck() {
@@ -139,7 +145,7 @@ public class Deck {
             sizeComputerDeck = PlayerAction.appendItem(computerDeck, sizeComputerDeck, item);
         }
 
-        
+
 
         // Reparte la última carta restante
         item = deck[sizeDeck - 1];
@@ -149,7 +155,7 @@ public class Deck {
     }
 
     /**
-     * 
+     *
      * @return Nos dice el numero actual de cartas que hay en el deck de la
      *         computadora.
      */

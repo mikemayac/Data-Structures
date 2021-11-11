@@ -1,14 +1,20 @@
+package fciencias.edatos.proyecto01;
 import java.util.Scanner;
 import java.util.Random;
-
+/**
+* Proyecto 01 del curso de Estructuras de Datos.
+* @author Francisco Javier Becerril Lara No Cuenta 317114490 y Joel Miguel Maya Castrejón 417112602
+* @version 11 Noviembre 2021.
+* @since Laboratorio de Estructuras de Datos 2022-1.
+*/
 
 public class Game {
 
 
 	static int sizeComputerDeck ;
+	DoubleLinkedList<String>  historial = new DoubleLinkedList<>();
     /**
-
-	 * 
+	 *
 	 *  Metodo de la implementacion del juego
 	 */
 	public  void playGame(){
@@ -19,14 +25,15 @@ public class Game {
 		System.out.println("Soy el robot y yo voy a repartir");
 		System.out.println("Tu deck actual de cartas es: ");
 	        System.out.println("");
-		PlayerAction.printArray(deck.getPlayerDeck(), deck.getSizePlayerDeck());
+		String s = ""+PlayerAction.printArray(deck.getPlayerDeck(), deck.getSizePlayerDeck())+"";
 	        System.out.println("");
+					historial.add(0,s);
 		System.out.println("Por cierto, como robot no puedo ver las cartas.");
 
 		System.out.println("Se van a descartar todos los pares de tu deck. Yo haré lo mismo.");
         sizeComputerDeck = deck.getSizeComputerDeck();
 		sizeComputerDeck = PlayerAction.removePairs(deck.getComputerDeck(), deck.getSizeComputerDeck());
-        
+
 		 int sizePlayerDeck = deck.getSizePlayerDeck();
          sizePlayerDeck =  PlayerAction.removePairs(deck.getPlayerDeck(), deck.getSizePlayerDeck());
 
@@ -38,9 +45,10 @@ public class Game {
 				System.out.println("\nTu deck actual de cartas es: ");
 				System.out.println("");
 
-				PlayerAction.printArray(deck.getPlayerDeck(), sizePlayerDeck);
+				String k = ""+PlayerAction.printArray(deck.getPlayerDeck(), sizePlayerDeck)+"";
 
 				System.out.println("");
+				historial.add(0,k);
 				int card_position = PlayerAction.getValidInput();
 
 
@@ -93,11 +101,20 @@ public class Game {
 			System.out.println("***********************************************************");
 			System.out.println("Lo lamento, ya no tengo mas cartas en mi mazo.");
 			System.out.println("Tu pierdes, yo la computadora gano.");
+			for(int i = 0; i< historial.size(); i++){
+
+					System.out.println("Tu mano número "+i+" en orden descendente fue " + historial.get(i).toString()+".");
+			}
 		} else {
 			System.out.println("***********************************************************");
 			System.out.println("Ya no tienes mas cartas en tu mazo");
 			System.out.println("Felicidades, haz ganado");
-		}	
+
+			for(int i = 0; i< historial.size(); i++){
+
+				  System.out.println("Tu mano número "+i+ " en orden descendente fue " + historial.get(i).toString()+".");
+			}
+		}
 }
 
 
@@ -111,7 +128,7 @@ public static void main(String[] args){
     System.out.println("Inicio del juego old maid.");
     System.out.println("");
     Game game = new Game();
-    game.playGame();		
+    game.playGame();
     System.out.println("");
 
 }

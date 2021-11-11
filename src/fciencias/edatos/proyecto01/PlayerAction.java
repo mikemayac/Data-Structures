@@ -1,15 +1,22 @@
+package fciencias.edatos.proyecto01;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+* Proyecto 01 del curso de Estructuras de Datos.
+* @author Francisco Javier Becerril Lara No Cuenta 317114490 y Joel Miguel Maya Castrejón 417112602
+* @version 11 Noviembre 2021.
+* @since Laboratorio de Estructuras de Datos 2022-1.
+*/
 public class PlayerAction {
 
 
 	/**
 	 *
 	 *  Obtiene un índice válido de una tarjeta que debe ser eliminada de computerDeck.
-	 *  Nota: este método no comprueba que la entrada sea efectivamente un número entero 
+	 *  Nota: este método no comprueba que la entrada sea efectivamente un número entero
 	 *  y se bloqueará si se proporciona otra cosa.
-	 * 
+	 *
 	 *  @return el input valido.
 	 */
 	public static int getValidInput( ){
@@ -27,19 +34,19 @@ public class PlayerAction {
 			position = sc.nextInt();
 			sc.nextLine();
 		}
-		
+
 		return position;
 	}
 
     /**
 	 *
-	 *  Elimina todos los pares de cartas del array deckOfCards, que actualmente 
-	 *  contiene las cartas de currentSize. deckOfCards no está ordenado. Tampoco 
+	 *  Elimina todos los pares de cartas del array deckOfCards, que actualmente
+	 *  contiene las cartas de currentSize. deckOfCards no está ordenado. Tampoco
 	 * debería estar ordenado una vez que el método termine.
 	 *
 	 *   @param deckOfCards el arreglo de strings que representa la baraja de cartas
-	 *   @param currentSize el número de strings en el arrayOfStrings, almacenado 
-     *   desde arrayOfStrings[0] hasta arrayOfStrings[currentSize-1] 
+	 *   @param currentSize el número de strings en el arrayOfStrings, almacenado
+     *   desde arrayOfStrings[0] hasta arrayOfStrings[currentSize-1]
 	 *   @return el número de cartas en deckOfCards una vez que se retira el par
 	 */
 	public static int removePairs(String[] deckOfCards, int currentSize){
@@ -52,9 +59,9 @@ public class PlayerAction {
 		while (i < currentSize - 1) {
 			String card1 = deckOfCards[i];
 			String card2 = deckOfCards[i + 1];
-			if (card1.charAt(0) == card2.charAt(0) && card1.charAt(1) == card2.charAt(1)) { 
+			if (card1.charAt(0) == card2.charAt(0) && card1.charAt(1) == card2.charAt(1)) {
 				i++;
-			} else if (card1.charAt(0) == card2.charAt(0)) { 
+			} else if (card1.charAt(0) == card2.charAt(0)) {
 				i++;
 			} else {
 				noPairsSize = appendItem(noPairs, noPairsSize, deckOfCards[i]);
@@ -73,16 +80,16 @@ public class PlayerAction {
 		return noPairsSize;
 	}
 
-	/** 
-     * Hace una ordenación lexicográfica de arrayOfStrings. 
+	/**
+     * Hace una ordenación lexicográfica de arrayOfStrings.
      * Simplemente se basa en el método sort(Object[])
-	 * de java.util.Arrays. 
-	 * Teniendo en cuenta que ordena en orden lexicográfico, por lo que 
-	 * "10" está antes que "2", "A" está antes que "Q", etc. 
-     * 
+	 * de java.util.Arrays.
+	 * Teniendo en cuenta que ordena en orden lexicográfico, por lo que
+	 * "10" está antes que "2", "A" está antes que "Q", etc.
+     *
      *   @param arrayOfStrings el arreglo de strings
      *   @param currentSize el número de cadenas en el arrayOfStrings,
-     * almacenado desde arrayOfStrings[0] hasta arrayOfStrings[currentSize-1] 
+     * almacenado desde arrayOfStrings[0] hasta arrayOfStrings[currentSize-1]
      */
     public static void sortArray(String[] arrayOfStrings, int currentSize){
         if( arrayOfStrings == null || currentSize > arrayOfStrings.length) {
@@ -92,18 +99,18 @@ public class PlayerAction {
 	java.util.Arrays.sort(arrayOfStrings, 0, currentSize );
 	}
 
-    
-    /** 
-     * 
+
+    /**
+     *
 	 * Barajea aleatoriamente el arrayOfStrings
-     * 
+     *
      *   @param arrayOfStrings el arreglo de strings
-     *   @param currentSize el número de strings en el arrayOfStrings, almacenado 
+     *   @param currentSize el número de strings en el arrayOfStrings, almacenado
      *   desde arrayOfStrings[0] hasta arrayOfStrings[currentSize-1]
      */
     public static void shuffleArray(String[] arrayOfStrings, int currentSize){
-     
-		
+
+
 	Random generator = new Random();
 
 	for(int i = currentSize-1 ; i > 1 ; i--){
@@ -120,20 +127,20 @@ public class PlayerAction {
 	arrayOfStrings[j]=intermediate;
     }
 
-    
-    /** 
+
+    /**
      * Método auxiliar
 	 * Elimina la cadena en arrayOfStrings[itemToRemove] y
-	 * 
+	 *
      *   @param arrayOfStrings el arreglo de cadenas
-     *   @param currentSize el número de cadenas en el arrayOfStrings, almacenado 
-     *   desde arrayOfStrings[0] hasta arrayOfStrings[currentSize-1] 
+     *   @param currentSize el número de cadenas en el arrayOfStrings, almacenado
+     *   desde arrayOfStrings[0] hasta arrayOfStrings[currentSize-1]
      *   @param itemToRemove índice del elemento a eliminar de arrayOfStrings
      *   @return el nuevo tamaño del arrayOfStrings modificado
      */
 
     public static int removeItemByIndex(String[] arrayOfStrings, int currentSize, int itemToRemove){
-		
+
 		if( arrayOfStrings == null || currentSize > arrayOfStrings.length) {
 			return currentSize;
 		}
@@ -149,14 +156,14 @@ public class PlayerAction {
         return currentSize-1;
         }
 
-    
-    /** 
+
+    /**
      * Método auxiliar
-     * Añade itemToAdd al final de arrayOfStrings 
-     * 
+     * Añade itemToAdd al final de arrayOfStrings
+     *
      *   @param arrayOfStrings el arreglo de cadenas
-     *   @param currentSize el número de cadenas en el arrayOfStrings, almacenado 
-     *   desde arrayOfStrings[0] hasta arrayOfStrings[currentSize-1] 
+     *   @param currentSize el número de cadenas en el arrayOfStrings, almacenado
+     *   desde arrayOfStrings[0] hasta arrayOfStrings[currentSize-1]
      *   @param itemToAdd la cadena a añadir a arrayOfStrings
      *   @return el nuevo tamaño del arrayOfStrings modificado
      */
@@ -166,31 +173,31 @@ public class PlayerAction {
 		if( arrayOfStrings == null || currentSize > arrayOfStrings.length) {
 			return currentSize;
 		}
-	
+
 		if( currentSize == arrayOfStrings.length) {
 			return currentSize;
 		}
 	arrayOfStrings[currentSize++]=itemToAdd;
 	return currentSize;
-	} 	
+	}
 
-    /** 
-	 * 
+    /**
+	 *
 	 * Imprime las cadenas contenidas en arrayOfStrings
-     * 
+     *
      *   @param arrayOfStrings el arreglo de cadenas
-     *   @param currentSize el número de cadenas en el arrayOfStrings, almacenado 
+     *   @param currentSize el número de cadenas en el arrayOfStrings, almacenado
      *   desde arrayOfStrings[0] hasta arrayOfStrings[currentSize-1]
      */
 
-    public static void printArray(String[] arrayOfStrings, int currentSize){
+    public static DoubleLinkedList<String>  printArray(String[] arrayOfStrings, int currentSize){
+			DoubleLinkedList<String> v = new DoubleLinkedList<>();
 	for(int i = 0; i < currentSize-1; i++){
-	    System.out.print(arrayOfStrings[i] + ", ");
-        }
-	System.out.println(arrayOfStrings[currentSize-1]);
+		 v.add(0,arrayOfStrings[i]);
+      }
+
+	v.add(0,arrayOfStrings[currentSize-1]);
+	System.out.println(v.toString());
+	return v;
 	}
 }
-
-   
-
-
