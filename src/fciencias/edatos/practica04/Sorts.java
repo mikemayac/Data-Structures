@@ -63,13 +63,10 @@ public class Sorts{
 			if (i >= j) {
 					return j;
 			} else {
-					int temp = arreglo[i];
-					arreglo[i] = arreglo[j];
-					arreglo[j] = temp;
+					swap(arreglo,i,j);
 					i++;
 					j--;
 			}
-
 	}
 }
 
@@ -141,22 +138,51 @@ public class Sorts{
 		 * @param hi el índice del último elemento.
 		 */
 		private static void merge(int[] arr, int lo, int mid, int hi){
-			int i = lo;
-			int j = mid+1;
-			int aux1[] = new int[i];
-			int aux2[] = new int[j];
 
-			for(int k = lo ; k <= hi; k++){
-				// Si ya nos acabamos los elementos de la primera mitad
-				if(i > mid)
-			arr[k] = aux2[j++];
-		else if(j > hi) // Si ya nos acabamos la segunda mitad
-			arr[k] = aux1[i++];
-		else if(aux2[j] < aux1[i]) // El menor está en la primera mitad
-			arr[k] = aux2[j++];
-		else // El manor está en la segunda mitad
-			arr[k] = aux1[i++];
-			}
+			 // Crea
+			 int n1 = mid - lo + 1;
+			 int n2 = hi - mid;
+
+			 /* arreglos auxiliares */
+			 int array1[] = new int[n1];
+			 int array2[] = new int[n2];
+
+			 /*Copiando los elementos del arreglo a los auxiliares*/
+			 for (int i = 0; i < n1; ++i)
+					 array1[i] = arr[lo + i];
+			 for (int j = 0; j < n2; ++j)
+					 array2[j] = arr[mid + 1 + j];
+
+
+			 int i = 0, j = 0;
+			 int k = lo;
+			 while (i<n1 && j<n2) {
+	 			if (array1[i] < array2[j]) { //Si el elemento de array1 es menor que array2
+	 				arr[k] = array1[i];	//Copiamos el elemento de array1
+	 				i++;
+					k++;					//Avanzamos una posicion en el array1
+
+	 			} else {					//Si el elemento de array2 es menor que array1
+	 				arr[k] = array2[j]; //Copiamos el elemento de array2
+	 				j++;				   //Avanzamos una posicion en el array2.
+	 			}
+	 			k++;                      //Avanzamos una posicion en el arreglo result.
+	 		}
+	 		//Cuando salimos del while es por que un arreglo ya sea el array1 o array2 se a
+	 		//copiado completamente, pero falta por copiarse elementos de algun arreglo aun.
+
+	 			while (j<n2) { //Mientras no hayamos terminado de copiar todos los elementos de array2.
+	 				arr[k] = array2[j]; //Copiamos el elemento de array2 en result.
+	 				j++; //Avanzamos una posicion en array2
+	 				k++; //Avanzamos una posicion en result.
+	 			}
+
+	 		//Entramos en la condicion que ya copiamos todo el array2, falta el array1.
+	 			while (i<n1) { //Mientras no hayamos terminado de copiar todos los elementos de array1.
+	 				arr[k] = array1[i]; //Copiamos el elemento de array1 en result.
+	 				i++; //Avanzamos una posicion en array1.
+	 				k++; //Avanzamos una posicion en result.
+	 			}
 		}
 		/**
 		 * Crea un nuevo arreglo con números pseudoaleatorios.
@@ -174,7 +200,9 @@ public class Sorts{
 
 		public static void main(String[] args) {
 			int[] arr1 = generate(100, 99);
-			int[] arr2 = Arrays.copyOf(arr1, arr1.length);
+			int [] arr2 =  {100,99,98,97,96,95,94,93,92,91,90,89,88,87,86,85,84,83,82,81,80,79,78,77,76,75,74,73,72,71,70,69,68,67,66,65,64,63,62,61,60,59,58
+				,57,56,55,54,53,52,51,50,49,48,47,46,45,44,43,42,41,40,39,38,37,36,35,34,33,32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,
+				8,7,6,5,4,3,2,1};
 			int [] arr3 =  {100,99,98,97,96,95,94,93,92,91,90,89,88,87,86,85,84,83,82,81,80,79,78,77,76,75,74,73,72,71,70,69,68,67,66,65,64,63,62,61,60,59,58
 				,57,56,55,54,53,52,51,50,49,48,47,46,45,44,43,42,41,40,39,38,37,36,35,34,33,32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,
 				8,7,6,5,4,3,2,1};
@@ -191,11 +219,11 @@ public class Sorts{
 
 
 			inicio = System.currentTimeMillis();
-			quickSort(arr2);
-				System.out.println("Despues de QS: " + Arrays.toString(arr2));
+		mergeSort(arr2);
+				System.out.println("Despues de MS: " + Arrays.toString(arr2));
 			fin = System.currentTimeMillis();
 
-			System.out.println("Ordenado con quickSort tardó: " + (fin - inicio) + " milisegundos");
+			System.out.println("Ordenado con mergeSort tardó: " + (fin - inicio) + " milisegundos");
 
 
 			//System.out.println("No ordenado: " + Arrays.toString(arr3));
