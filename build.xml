@@ -45,11 +45,10 @@ Contiene los siguientes comandos:
   <target name="doc" >
     <mkdir dir="doc" />
     <!-- TODO usar nombres apropiados para la documentación -->
-    <javadoc sourcepath="src" destdir="doc" access="private" windowtitle="Practica03" doctitle="Practica01" author="true" version="true" >
+    <javadoc sourcepath="src" destdir="doc" access="private" windowtitle="Practica04" doctitle="Practica04" author="true" version="true" >
       <classpath >
       </classpath >
     </javadoc>
   </target >
 
 </project>
-
