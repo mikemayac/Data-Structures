@@ -2,7 +2,7 @@ package fciencias.edatos.practica05;
 
 /**
 * Implementación de un árbol binario de busqueda.
-* @author Emmanuel Cruz Hernández.
+* @author Francisco Javier Becerril Lara No Cuenta 317114490 y Joel Miguel Maya Castrejón 417112602
 * @version 3.0 Noviembre 2021 (Anterior 2.0 Julio 2021).
 * @since Estructuras de Datos 2022-1.
 */
