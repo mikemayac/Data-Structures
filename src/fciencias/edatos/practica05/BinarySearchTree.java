@@ -73,22 +73,44 @@ public class BinarySearchTree<K extends Comparable<K>, T> implements TDABinarySe
 			return retrieve(actual.rigth, k);
 		}
 	}
-/*
+
 	@Override
 	public void insert(T e, K k){
+		BinarySearchTree<K,T> Tree = new BinarySearchTree();
+		BinaryNode node = new BinaryNode(k,e,null);
+		if(Tree.isEmpty()){
+			Tree.root = node;
+			return;
+		}
+		 insert(Tree.root, e,k);
 		// Si es vacío entonces insertamos al nuevo elemento como la raíz del árbol
-		// Crear un nodo iterador que comience en la raíz
 		// Invocar el método insert de tres parámetros
 	}
 
 	private void insert(BinaryNode actual, T e, K k){
+		if (actual.key.compareTo(k) < 0){
+			if(actual.left == null){
+				actual.left = actual;
+			}
+			else{
+				insert(actual.left,e,k);
+			}
+			if(actual.key.compareTo(k) > 0){
+				if(actual.rigth == null){
+					actual.rigth = actual;
+				}
+			}
+			else{
+				insert(actual.rigth,e,k);
+			}
+		}
 		// Comparamos las claves: la clave de actual con k. Con compareTo
 		// Si la clave es menor verificamos que el hijo izquierdo no sea null
 		// * Si es null insertamos el nuevo elemento como hijo izquierdo del actual. Si no recursión
 		// Si la clave es mayor
 		// * Si es null insertamos el nuevo elemento como hijo derecho del actual. Si no recursión
 	}
-
+/*
 	@Override
 	public T delete(K k){
 		// retieve(root, k)
@@ -110,6 +132,7 @@ public class BinarySearchTree<K extends Comparable<K>, T> implements TDABinarySe
 		// Borramos al hijo con el que se hizo swap. Podemos hacer null a ambos hijos
 		return null;
 	}
+	*/
 	/**
 	* Verifica si el árbol es vacío.
 	* @return true si el árbol es vacío, false en otro caso.
