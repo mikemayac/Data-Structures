@@ -73,7 +73,7 @@ public class BinarySearchTree<K extends Comparable<K>, T> implements TDABinarySe
 			return retrieve(actual.rigth, k);
 		}
 	}
-
+/*
 	@Override
 	public void insert(T e, K k){
 		// Si es vacío entonces insertamos al nuevo elemento como la raíz del árbol
@@ -110,7 +110,16 @@ public class BinarySearchTree<K extends Comparable<K>, T> implements TDABinarySe
 		// Borramos al hijo con el que se hizo swap. Podemos hacer null a ambos hijos
 		return null;
 	}
-
+	/**
+	* Verifica si el árbol es vacío.
+	* @return true si el árbol es vacío, false en otro caso.
+	*
+	*/
+	@Override
+	public boolean isEmpty(){
+		return root != null;
+	}
+	/*
 	@Override
 	public T findMin(){
 		// Verificar que no sea vacío -> return null
@@ -118,24 +127,64 @@ public class BinarySearchTree<K extends Comparable<K>, T> implements TDABinarySe
 		// Ya encontramos al nodo con clave menor
 		return null;
 	}
-
+  */
 	@Override
 	public T findMax(){
-		return null;
-	}
+		BinaryNode node = findMax(root,root.element);
+		if(node == null)
+			return null;
+		return node.element;
+		}
+		public BinaryNode findMax(BinaryNode act, T element){
+			if(act == null)
+				return null;
+			while(act.rigth != null){
+				act = act.rigth;
+			}
+			return findMax(act,element);
+		}
+
+
 
 	@Override
 	public void preorden(){
-		// Primero verifica la raiz
-		// Aplica preorden al izquierdo
-		// Aplica preorden al derecho
+			preorden(root);
+	}
+	public void preorden(BinaryNode B){
+		if(B == null){
+			return;
+		}
+		System.out.println(B.element + " ");
+		preorden(B.left);
+		preorden(B.rigth);
+
+	}
+	@Override
+	public void inorden(){
+
+	inorder(root);
 	}
 
+ private void inorder(BinaryNode B){
+	  if(B == null){
+			return;
+		}
+		inorder(B.left);
+		System.out.println(B.element + " ");
+		inorder(B.rigth);
+ }
 	@Override
-	public void inorden(){}
-
-	@Override
-	public void postorden(){}
+	public void postorden(){
+			postorden(root);
+	}
+	public void postorden(BinaryNode B){
+		if(B == null){
+			return;
+		}
+		postorden(B.left);
+		postorden(B.rigth);
+		System.out.println(B.element + " ");
+	}
 
 	public static void main(String[] args) {
 
