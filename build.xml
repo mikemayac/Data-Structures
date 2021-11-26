@@ -27,25 +27,25 @@ Contiene los siguientes comandos:
     <antcall target="build" />
     <mkdir dir="build/jar" />
     <!-- TODO cambiar el nombre del JAR -->
-    <jar destfile="build/jar/Practica04.jar" basedir="build/classes" >
+    <jar destfile="build/jar/Practica05.jar" basedir="build/classes" >
       <manifest >
 	<attribute name="DependencyFinder" value="main" />
 	<!-- TODO SET MAIN CLASS -->
-	<attribute name="Main-Class" value="fciencias.edatos.practica04.Sorts" />
+	<attribute name="Main-Class" value="fciencias.edatos.practica05.BinarySearchTree" />
       </manifest >
     </jar >
   </target>
 
   <target name="run" >
     <!-- TODO usar el nombre del JAR que será generado -->
-    <java jar="build/jar/Practica04.jar" fork="true" >
+    <java jar="build/jar/Practica05.jar" fork="true" >
     </java>
   </target >
 
   <target name="doc" >
     <mkdir dir="doc" />
     <!-- TODO usar nombres apropiados para la documentación -->
-    <javadoc sourcepath="src" destdir="doc" access="private" windowtitle="Practica04" doctitle="Practica04" author="true" version="true" >
+    <javadoc sourcepath="src" destdir="doc" access="private" windowtitle="Practica05" doctitle="Practica05" author="true" version="true" >
       <classpath >
       </classpath >
     </javadoc>

@@ -1,3 +1,5 @@
+package fciencias.edatos.practica05;
+
 /**
 * Interfaz que define las operaciones sobre un arbol
 * binario de busqueda.
@@ -18,7 +20,7 @@ public interface TDABinarySearchTree<K extends Comparable, T>{
 	* Inserta un nuevo elemento al árbol.
 	* @param e el elemento a ingresar.
 	* @param k la clave del elemento a ingresar.
-	*/
+  */
 	public void insert(T e, K k);
 
 	/**
@@ -38,11 +40,13 @@ public interface TDABinarySearchTree<K extends Comparable, T>{
 	/**
 	* Encuentra la clave k con valor o peso máximo del árbol.
 	* @return el elemento con llave de peso máximo.
+	*
 	*/
 	public T findMax();
 
 	/**
 	 * Recorre el árbol en preorden.
+	 *
 	 */
 	public void preorden();
 
@@ -53,12 +57,14 @@ public interface TDABinarySearchTree<K extends Comparable, T>{
 
 	/**
 	 * Recorre el árbol en postorden.
+	 *
 	 */
 	public void postorden();
 
 	/**
 	* Verifica si el árbol es vacío.
 	* @return true si el árbol es vacío, false en otro caso.
+	*
 	*/
 	public boolean isEmpty();
 
