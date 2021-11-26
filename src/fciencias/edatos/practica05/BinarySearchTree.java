@@ -1,4 +1,5 @@
 package fciencias.edatos.practica05;
+import java.util.Scanner;
 
 /**
 * Implementación de un árbol binario de busqueda.
@@ -82,20 +83,20 @@ public class BinarySearchTree<K extends Comparable<K>, T> implements TDABinarySe
 			Tree.root = node;
 			return;
 		}
-		 insert(Tree.root, e,k);
+		 insert(node, e,k);
 		// Si es vacío entonces insertamos al nuevo elemento como la raíz del árbol
 		// Invocar el método insert de tres parámetros
 	}
 
 	private void insert(BinaryNode actual, T e, K k){
-		if (actual.key.compareTo(k) < 0){
+		if (actual.key.compareTo(k) <= 0){
 			if(actual.left == null){
 				actual.left = actual;
 			}
 			else{
 				insert(actual.left,e,k);
 			}
-			if(actual.key.compareTo(k) > 0){
+			if(actual.key.compareTo(k) >= 0){
 				if(actual.rigth == null){
 					actual.rigth = actual;
 				}
@@ -140,7 +141,11 @@ public class BinarySearchTree<K extends Comparable<K>, T> implements TDABinarySe
 	*/
 	@Override
 	public boolean isEmpty(){
-		return root != null;
+		if (root == null){
+				return  true;
+		}
+	 return false;
+
 	}
 	/*
 	@Override
@@ -210,6 +215,71 @@ public class BinarySearchTree<K extends Comparable<K>, T> implements TDABinarySe
 	}
 
 	public static void main(String[] args) {
+		BinarySearchTree<Integer,Object>  tree = new BinarySearchTree();
 
-	}
-}
+
+	        Scanner sc = new Scanner(System.in);
+
+	        do{
+	            System.out.println(
+	            "[1] Regresar el elemento asociado dado número entero \n"+
+	            "[2] Inserta un elemento en el arbol dado un caracter y un número entero\n"+
+	            "[3] Elimina elementos del arbol dado un número entero\n"+
+	            "[4] Regresa el elemnto con el número minimo en el arbol\n"+
+	            "[5] Regresa el elemnto con el número máximo en el arbol\n"+
+	            "[6] ¿Es vacio el arbol?\n"+
+	            "[7] Recorrido preorden\n"+
+	            "[8] Recorrido inorden\n"+
+	            "[9] Recorrido postorden\n"+
+	            "[10] Salir del menu\n"+
+	            "Elige una opcion: ");
+
+	            int opcion = sc.nextInt();
+	            sc.nextLine();
+
+	            switch(opcion){
+	                case 1:
+	                    System.out.println("Ingresa el número para buscar el elemento ");
+	                    int i = sc.nextInt();
+	                    sc.nextLine();
+	                    tree.retrieve(i);
+	                    break;
+	                case 2:
+	                    System.out.println("Ingresa el caracter y el número entero para ingresarlos en el arbol");
+	                    char f = sc.next().charAt(0);
+											int j = sc.nextInt();
+											sc.nextLine();
+	                    tree.insert(f,j);
+	                    break;
+	                case 3:
+											System.out.println("Ingresa el número para eliminar el nodo ");
+											int h = sc.nextInt();
+											sc.nextLine();
+	                    //tree.delete();
+	                    break;
+	                case 4:
+	                     //System.out.println("El elemento minimo es"+tree.findMin()+".");
+	                    break;
+	                case 5:
+	                    System.out.println("El elemento máximo es"+tree.findMax()+".");
+	                    break;
+	                case 6:
+	                    tree.isEmpty();
+	                    break;
+	                case 7:
+	                   tree.preorden();
+	                    break;
+	                case 8:
+	                   	tree.inorden();
+	                    break;
+	                case 9:
+	                 			tree.postorden();
+	                    break;
+	                case 10:
+	                    break;
+	                default:
+	                    System.out.println("Opción inválida");
+	            }
+	        } while(true);
+				}
+	    }
